@@ -15,7 +15,7 @@ jobs:
     - name: update apt
       run: apt-get update 
     - name: ensure build packages are installed
-      run: apt-get -y install g++-arm-linux-gnueabihf build-essential git
+      run: apt-get -y install g++-powerpc-linux-gnu build-essential git
     - name: build powerpc binary
       run: make CROSS_COMPILE="powerpc-linux-gnu-"
     - name: copy powerpc bin to output directory
