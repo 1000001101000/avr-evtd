@@ -9,7 +9,9 @@ TITLE=Linkstation AVR Event daemon
 #
 # User configurable variables
 #
-CXX = c++
+CROSS_COMPILE ?=
+
+CXX = $(CROSS_COMPILE)g++
 CXXFLAGS = -Wall -Wextra -Weffc++ -g -O2 -fstack-protector-strong -Wformat -Werror=format-security -pipe -D_FORTIFY_SOURCE=2 -fPIE -pie -Wl,-z,relro
 
 ######################################################################
