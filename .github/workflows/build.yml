@@ -1,0 +1,34 @@
+name: Generate Binaries
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: 'debian:9'
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: make output directory if needed
+      run: mkdir bins || exit 0
+    - name: update apt
+      run: apt-get update 
+    - name: ensure build packages are installed
+      run: apt-get -y install g++-arm-linux-gnueabihf build-essential git
+    - name: build powerpc binary
+      run: make CROSS_COMPILE="powerpc-linux-gnu-"
+    - name: copy powerpc bin to output directory
+      run: cp avr-evtd bins/avr-evtd-powerpc
+    - name: make clean
+      run: make clean
+    - name: set git user name
+      run: git config user.name "workflow@github" 
+    - name: set git user email
+      run: git config user.email "workflow@github"
+    - name: add new files to repo if needed
+      run: git add bins/*
+    - name: commit new files
+      run: git commit -a -m "commit binaries built from latest source" || exit 0
+    - name: push changes
+      run: git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:master
