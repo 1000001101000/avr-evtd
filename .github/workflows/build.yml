@@ -6,7 +6,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: 'debian:8'
+    container: 'debian:9'
 
     steps:
     - uses: actions/checkout@v1
