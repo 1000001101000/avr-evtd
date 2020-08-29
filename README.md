@@ -1,3 +1,11 @@
+This is a fork of the old project aimed at building/using it with more modern versions of linux (to the extent that's possible).
+
+So far I have:
+- modifiedto the Makefile to support crosscompiling
+- setup a workflow to build PowerPC and Mipsel binaries
+
+I have not yet confirmed these binaries work with any devices.
+
 # AVR Event Daemon (old PPC-EVTD)
 
 Copyright © 2006	Bob Perry <lb-source@users.sf.net>
