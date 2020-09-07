@@ -27,6 +27,8 @@ all: avr-evtd
 
 avr-evtd: avr-evtd.cpp
 	$(CXX) $(CXXFLAGS) -o avr-evtd avr-evtd.cpp
+static:
+	$(CXX) $(CXXFLAGS) -static -o avr-evtd avr-evtd.cpp
 
 clean:
 	rm -f avr-evtd *~ *.o
