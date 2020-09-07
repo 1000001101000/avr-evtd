@@ -22,10 +22,22 @@ jobs:
       run: cp avr-evtd bins/avr-evtd-powerpc
     - name: make clean
       run: make clean
+    - name: build powerpc-static binary
+      run: make static CROSS_COMPILE="powerpc-linux-gnu-"
+    - name: copy powerpc bin to output directory
+      run: cp avr-evtd bins/avr-evtd-powerpc-static
+    - name: make clean
+      run: make clean
     - name: build mipsel binary
       run: make CROSS_COMPILE="mipsel-linux-gnu-"
     - name: copy mipsel bin to output directory
       run: cp avr-evtd bins/avr-evtd-mipsel
+    - name: make clean
+      run: make clean
+    - name: build mipsel static binary
+      run: make static CROSS_COMPILE="mipsel-linux-gnu-"
+    - name: copy mipsel bin to output directory
+      run: cp avr-evtd bins/avr-evtd-mipsel-static
     - name: make clean
       run: make clean
     - name: set git user name
