@@ -13,7 +13,9 @@ jobs:
     - name: make output directory if needed
       run: mkdir bins || exit 0
     - name: update apt
-      run: apt-get update 
+      run: apt-get update
+    - name: update apt
+      run: apt-cache search g++ 
     - name: ensure build packages are installed
       run: apt-get -y install g++-powerpc-linux-gnu g++-mipsel-linux-gnu build-essential git
     - name: build powerpc binary
