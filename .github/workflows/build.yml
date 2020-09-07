@@ -6,7 +6,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    container: 'debian:8'
+    container: 'debian:9'
 
     steps:
     - uses: actions/checkout@v1
@@ -14,8 +14,6 @@ jobs:
       run: mkdir bins || exit 0
     - name: update apt
       run: apt-get update
-    - name: update apt
-      run: apt-cache search g++ | grep g++
     - name: ensure build packages are installed
       run: apt-get -y install g++-powerpc-linux-gnu g++-mipsel-linux-gnu build-essential git
     - name: build powerpc binary
